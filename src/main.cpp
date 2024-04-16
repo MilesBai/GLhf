@@ -83,8 +83,15 @@ int main(void)
     glEnableVertexAttribArray(vcol_location);
     glVertexAttribPointer(vcol_location, 3, GL_FLOAT, GL_FALSE,
                           sizeof(vertices[0]), (void*) (sizeof(float) * 2));
+
+    double startTime = glfwGetTime();  // Capture the start time
+
     while (!glfwWindowShouldClose(window))
     {
+        if (glfwGetTime() - startTime > 4.0) {  // Check if 4 seconds have elapsed
+          break;  // Exit the loop if 4 seconds have passed
+        }
+
         float ratio;
         int width, height;
         mat4x4 m, p, mvp;
@@ -102,6 +109,7 @@ int main(void)
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+
     glfwDestroyWindow(window);
     glfwTerminate();
     exit(EXIT_SUCCESS);
