@@ -54,7 +54,7 @@ int main(void)
 
     if (!window)
     {
-        std::cout << "Failed to create GLFW window" << std::endl;
+        printf("Failed to create GLFW window \n");
         glfwTerminate();
         exit(EXIT_FAILURE);
     }
